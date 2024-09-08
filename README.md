@@ -19,6 +19,14 @@ CoverCraft is an intelligent cover letter generation tool designed to help job s
 - **API Calls**: Axios
 - **File Handling**: file-saver and docx for document creation
 
+## Visuals
+
+![image](https://github.com/user-attachments/assets/b1262f3e-143c-4cb0-8374-7d7e4c3a541b)
+![image](https://github.com/user-attachments/assets/9f6a6987-2455-4372-b1f6-ed0b48d8b291)
+![image](https://github.com/user-attachments/assets/b4f95344-fdff-4146-bb60-dc64f579cade)
+
+
+
 ## Getting Started
 
 1. Clone the repository
