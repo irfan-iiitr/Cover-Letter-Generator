@@ -1,50 +1,55 @@
-# React + TypeScript + Vite
+# CoverCraft
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CoverCraft is an intelligent cover letter generation tool designed to help job seekers create personalized, professional cover letters tailored to their specific job applications.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **CV Upload**: Users can upload their CV/resume in various formats.
+- **Previous Cover Letter Upload**: Option to upload a previous cover letter for reference.
+- **Job Description Input**: Users can paste the job description they're applying for.
+- **Additional Information**: Space for users to add extra details like contact information.
+- **AI-Powered Generation**: Utilizes advanced AI to create a tailored cover letter based on the provided information.
+- **Instant Download**: Generated cover letters can be immediately downloaded as a formatted Word document.
 
-## Expanding the ESLint configuration
+## Technology Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Frontend**: React with TypeScript
+- **UI Framework**: Tailwind CSS with shadcn/ui components
+- **Backend**: Node.js with Express
+- **API Calls**: Axios
+- **File Handling**: file-saver and docx for document creation
 
-- Configure the top-level `parserOptions` property like this:
+## Getting Started
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. Clone the repository
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Set up environment variables (see `.env.example`)
+4. Start the development server:
+   ```
+   npm run dev
+   ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Usage
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. Navigate to the home page and click "Get Started"
+2. Upload your CV and (optionally) a previous cover letter
+3. Paste the job description you're applying for
+4. Add any additional information you want to include
+5. Click "Generate Cover Letter"
+6. Review and download your personalized cover letter
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for more details.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Thanks to all contributors who have helped shape CoverCraft
+- Special thanks to the creators and maintainers of the open-source libraries we use
