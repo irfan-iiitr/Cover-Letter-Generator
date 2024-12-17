@@ -2,7 +2,10 @@ import { useState } from 'react'
 import './App.css'
 import CVUploadForm from './components/CVUploadForm'
 import DownloadCoverLetter from './components/DownloadCoverLetter'
-import { ArrowLeft, Mail, FileText } from 'lucide-react' // Import icons
+import { ArrowLeft, Mail, FileText } from 'lucide-react'
+import { MantineProvider } from '@mantine/core';
+import '@mantine/core/styles.css';
+import '@mantine/tiptap/styles.css';
 
 function App() {
   const [email, setEmail] = useState('')
@@ -103,6 +106,7 @@ function App() {
   };
 
   return (
+    <MantineProvider>
     <div className="min-h-screen bg-background text-foreground">
       <header className="py-6 px-4 sm:px-6 lg:px-8">
         <nav className="flex  items-center">
@@ -125,6 +129,7 @@ function App() {
         </div>
       </footer>
     </div>
+    </MantineProvider>
   )
 }
 

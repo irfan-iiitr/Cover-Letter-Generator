@@ -1,6 +1,7 @@
 import React from 'react';
 import { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType } from 'docx';
 import { saveAs } from 'file-saver';
+import RichTextEditorComponent from './RichTextEditorComponent';
 
 interface DownloadCoverLetterProps {
   coverLetter: string;
@@ -49,16 +50,15 @@ const DownloadCoverLetter: React.FC<DownloadCoverLetterProps> = ({ coverLetter }
         onClick={handleDownload}
         className="px-6 py-3 bg-primary text-primary-foreground rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors"
       >
-        Download Cover Letter
+        Download Cover Letter in Docx
       </button>
       <div className="mt-8 text-left">
         <h3 className="text-xl font-semibold mb-2">Preview:</h3>
-        <pre className="whitespace-pre-wrap bg-gray-100 p-4 rounded">
-          {coverLetter || 'No cover letter text available.'}
-        </pre>
+        <RichTextEditorComponent content={coverLetter || 'No cover letter text available.'} />
       </div>
     </div>
   );
 };
 
 export default DownloadCoverLetter;
+

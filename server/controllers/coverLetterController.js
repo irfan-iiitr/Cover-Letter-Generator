@@ -1,6 +1,7 @@
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const fs = require('fs');
 const pdf = require('pdf-parse');
+const mammoth = require('mammoth');
 const { Document, Paragraph, Packer } = require('docx');
 
 const API_KEY = process.env.API_KEY || 'your_fallback_api_key_here';
@@ -14,15 +15,29 @@ exports.generateCoverLetter = async (req, res) => {
     let previousCoverLetter = '';
 
     if (req.files['cv']) {
-      const cvBuffer = fs.readFileSync(req.files['cv'][0].path);
-      const cvData = await pdf(cvBuffer);
-      cv = cvData.text;
+      const cvFile = req.files['cv'][0];
+      const cvBuffer = fs.readFileSync(cvFile.path);
+
+      if (cvFile.mimetype === 'application/pdf') {
+        const cvData = await pdf(cvBuffer);
+        cv = cvData.text;
+      } else if (cvFile.mimetype === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+        const cvData = await mammoth.extractRawText({ buffer: cvBuffer });
+        cv = cvData.value;
+      }
     }
 
     if (req.files['previousCoverLetter']) {
-      const coverLetterBuffer = fs.readFileSync(req.files['previousCoverLetter'][0].path);
-      const coverLetterData = await pdf(coverLetterBuffer);
-      previousCoverLetter = coverLetterData.text;
+      const coverLetterFile = req.files['previousCoverLetter'][0];
+      const coverLetterBuffer = fs.readFileSync(coverLetterFile.path);
+
+      if (coverLetterFile.mimetype === 'application/pdf') {
+        const coverLetterData = await pdf(coverLetterBuffer);
+        previousCoverLetter = coverLetterData.text;
+      } else if (coverLetterFile.mimetype === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+        const coverLetterData = await mammoth.extractRawText({ buffer: coverLetterBuffer });
+        previousCoverLetter = coverLetterData.value;
+      }
     }
 
     // Construct prompt for Gemini API with 500-word limit

@@ -21,7 +21,7 @@ router.get('/test-gemini', async (req, res) => {
     const result = await model.generateContent("Hello, Gemini!");
     res.json({ response: result.response.text() });
   } catch (error) {
-    console.error('Test Gemini Error:', error);
+    console.error('Test Gemini Error:', error); 
     res.status(500).json({ error: error.message, details: error.response?.data });
   }
 });
